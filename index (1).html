@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Pumpkin ❤️</title>
+    <style>
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes dayToNight {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(0.3); }
+        }
+        body {
+            background-color: #fdf3e7;
+            color: #5e3b3b;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            animation: dayToNight 12s infinite alternate;
+        }
+        .background {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://i.postimg.cc/FHSbfRdv/freepik-a-vibrant-colorful-tree-with-a-large-fluffy-pink-and-purple-crown-stands-atop-a-mountainous.jpg') no-repeat center center/cover; 
+            opacity: 0.4;
+            filter: blur(8px);
+            z-index: 0;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: bold;
+            color: #bd0d3f;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+        .special-message {
+            font-size: 22px;
+            font-family: 'Cursive', sans-serif;
+            color: #66001d;
+            margin-bottom: 30px;
+        }
+        .music-button {
+            background: linear-gradient(to right, pink, lavender);
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .surprise-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            font-size: 50px;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+        .touch-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #5e3b3b;
+            margin-top: 5px;
+        }
+        .letter-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.9);
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .letter {
+            font-size: 22px;
+            color: #5e3b3b;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            padding: 20px;
+            border: 2px solid #bd0d3f;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            width: 60%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #bd0d3f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .footer-text {
+            position: absolute;
+            bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #4a4a4a;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container" id="content">
+        <div class="title">For My Pumpkin ❤️</div>
+        <div class="special-message">❝ Zeher vekh ke peeta te ki peeta Ishq soch ke keeta te ki keeta Dil de ke dil lain di aas rakhi Pyar eho jeha keeta te ki keeta ❞</div>
+        
+        <button class="music-button" onclick="toggleMusic()" id="music-btn">Play Our Song</button>
+        
+        <div class="surprise-box" onclick="showLetter()">🎁</div>
+        <div class="touch-text">Touch Me</div>
+        
+        <div class="footer-text">I love you 3000 ❤️</div>
+    </div>
+    
+    <div class="letter-container" id="letter-container" style="display: none;">
+        <button class="close-btn" onclick="hideLetter()">Close</button>
+        <div class="letter" id="love-letter">
+            Forever With You<br><br>
+            We first met when spring was bright,<br>
+            Blossoms danced in golden light.<br>
+            I never thought you'd talk to me,<br>
+            Yet here we are, like destiny.<br><br>
+            Your laughter warmed the April breeze,<br>
+            Time stood still with simple ease.<br>
+            From stolen glances, shy and new,<br>
+            To endless days of love so true.<br><br>
+            Through summer sun and autumn’s hue,<br>
+            Winter nights felt warm with you.<br>
+            Hand in hand, we’ve come so far,<br>
+            Guided always by love’s bright star.<br><br>
+            Forever isn’t just a dream,<br>
+            It’s waking up to you with gleam.<br>
+            Through every season, come what may,<br>
+            I’ll love you more each passing day.
+        </div>
+    </div>
+
+    <audio id="audio" src="your-audio-file.mp3"></audio>
+    
+    <script>
+        function showLetter() {
+            document.getElementById('letter-container').style.display = 'flex';
+        }
+        function hideLetter() {
+            document.getElementById('letter-container').style.display = 'none';
+        }
+        function toggleMusic() {
+            var audio = document.getElementById('audio');
+            var button = document.getElementById('music-btn');
+            if (audio.paused) {
+                audio.play();
+                button.textContent = "Pause Our Song";
+            } else {
+                audio.pause();
+                button.textContent = "Play Our Song";
+            }
+        }
+    </script>
+</body>
+</html>
